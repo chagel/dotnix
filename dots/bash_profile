@@ -1,0 +1,24 @@
+export ALIASES=$HOME/Dotfiles/aliases
+
+# load customized aliases
+source $ALIASES/system
+source $ALIASES/basic
+source $ALIASES/tools
+source $ALIASES/dev
+
+# autoload scripts
+export SCRIPTS=$HOME/Dotfiles/scripts
+export PATH="$SCRIPTS:$PATH"
+
+# clean the PATH variables
+export PATH=$(ruby -e "puts ENV['PATH'].split(':').uniq.sort.join(':')")
+
+# enter xwindow after console login
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+
+  if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
+
+    Hyprland
+
+  fi
+fi

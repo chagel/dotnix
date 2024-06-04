@@ -1,0 +1,6 @@
+#!/bin/sh
+
+LOCK_ROOT="$HOME/Pictures/wallpaper"
+IMG=$(ls $LOCK_ROOT/*.* | shuf -n1)
+
+swaylock -f -c 000000 -i $IMG --indicator-radius 120 --indicator-thickness 20
